@@ -1,9 +1,9 @@
 {
   "collection": "nav-pilot",
-  "version": "2026.10.15-085355-ab2d38f",
+  "version": "2026.10.15-102620-ea70da8",
   "scope": "repo",
   "source_repo": "navikt/copilot",
-  "source_sha": "b4e43f5a8be08fb53310aa952c26c67e0d195b00",
+  "source_sha": "ea70da85f0baaded60b739074d7960275f3e64be",
   "installed_at": "2026-10-15T10:40:49Z",
   "files": [
     {
