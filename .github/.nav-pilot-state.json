@@ -1,0 +1,370 @@
+{
+  "collection": "nav-pilot",
+  "version": "2026.10.15-085355-ab2d38f",
+  "scope": "repo",
+  "source_repo": "navikt/copilot",
+  "source_sha": "b4e43f5a8be08fb53310aa952c26c67e0d195b00",
+  "installed_at": "2026-10-15T10:40:49Z",
+  "files": [
+    {
+      "path": ".github/agents/accessibility.agent.md",
+      "hash": "03d2ec6ccc4a2101",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/aksel.agent.md",
+      "hash": "700721ce34d631f5",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/code-review.agent.md",
+      "hash": "811b2a6765ff86de",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/forfatter.agent.md",
+      "hash": "81d4560449214a21",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/kafka.agent.md",
+      "hash": "743153095326cb24",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/nav-pilot-opus.agent.md",
+      "hash": "9589574e7c94010a",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/nav-pilot.agent.md",
+      "hash": "2339a650aeb79e66",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/research.agent.md",
+      "hash": "22005ea46dec85a0",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/rust.agent.md",
+      "hash": "e1cb55806cd87d8c",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/security-champion.agent.md",
+      "hash": "65fed295fcdd5bd1",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/agents/worker.agent.md",
+      "hash": "30566b7b3fbd4e84",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/hooks/ask-first-aria.py",
+      "hash": "fc5c399249a5d7b2",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/hooks/gh-poll-gate.py",
+      "hash": "72b72d28f9ec16bf",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/hooks/klarsprak-gate.py",
+      "hash": "c2155ad041f460fd",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/accessibility.instructions.md",
+      "hash": "c3715d3fc2782a5b",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/database.instructions.md",
+      "hash": "9fc5267c1dc9dd01",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/deliberate-ai-use.instructions.md",
+      "hash": "c323e57324694374",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/docker.instructions.md",
+      "hash": "d29c19982baad0d4",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/github-actions.instructions.md",
+      "hash": "553b61e739b1430d",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/golang.instructions.md",
+      "hash": "49ac99c6740220c6",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/kotlin.instructions.md",
+      "hash": "b5a426974a5e4ab6",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/nextjs-aksel.instructions.md",
+      "hash": "342cce96431f6ca5",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/norwegian-text.instructions.md",
+      "hash": "25ee167a83661c64",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/output-style.instructions.md",
+      "hash": "919ebcfd22f06b2e",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/performance.instructions.md",
+      "hash": "cde5b75a73890cbc",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/security-core.instructions.md",
+      "hash": "5f9b18a450d64fe7",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/security-owasp.instructions.md",
+      "hash": "3829d8b32cac8b70",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/testing-kotlin.instructions.md",
+      "hash": "183e7a28acecdbb5",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/testing-typescript.instructions.md",
+      "hash": "6c6055340a9d075c",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/instructions/testing.instructions.md",
+      "hash": "ca2a23744bef3a2c",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/prompts/aksel-component.prompt.md",
+      "hash": "fa646ea49f00e34e",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/prompts/golang-service.prompt.md",
+      "hash": "7fde0ad3e0920750",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/prompts/kafka-topic.prompt.md",
+      "hash": "4dedc8bfb89c321c",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/prompts/ktor-endpoint.prompt.md",
+      "hash": "19f9709a094b034e",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/prompts/nais-manifest.prompt.md",
+      "hash": "df650deedb8cf0f0",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/prompts/nextjs-api-route.prompt.md",
+      "hash": "f5344c834c5fb492",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/prompts/spring-boot-endpoint.prompt.md",
+      "hash": "e2e2a7c6af3729b3",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/ai-news-research/",
+      "hash": "3cd92cbaef53b201",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/aksel-builder/",
+      "hash": "3075f3a92c2eb6fc",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/aksel-spacing/",
+      "hash": "177594fc5ae8d7e3",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/api-design/",
+      "hash": "a353aded69a4bd4c",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/appsec-advisory/",
+      "hash": "47dc8fb85cebb2bb",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/conventional-commit/",
+      "hash": "0c21beaedabd1e39",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/deliberate-ai-use/",
+      "hash": "c329412b61d8f8c1",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/flyway-migration/",
+      "hash": "ebb952121b180fac",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/jackson-3-migration/",
+      "hash": "9b4932b7b9d4a076",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/java-to-kotlin/",
+      "hash": "52cd8180b93a846b",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/kafka/",
+      "hash": "312ab4de91a246fa",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/klarsprak/",
+      "hash": "d7e22a0fab7b9388",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/kotlin-app-config/",
+      "hash": "9168a07cc0b620c3",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/ktor-scaffold/",
+      "hash": "68b1ffff9f769c0a",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/nais/",
+      "hash": "b0b94d480fbdb4c6",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/nav-architecture-review/",
+      "hash": "0aa50579f690c3a1",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/nav-auth/",
+      "hash": "581809ed36d9a6d6",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/nav-deep-interview/",
+      "hash": "eeb3399ecd4e352c",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/nav-dekoratoren/",
+      "hash": "4b5d432477529d66",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/nav-plan/",
+      "hash": "db7618d269cd2f07",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/nav-troubleshoot/",
+      "hash": "e9900d58d91ee0ee",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/observability-debugging/",
+      "hash": "d09dd467d7ce45a7",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/observability-setup/",
+      "hash": "b16ee0c748b966bf",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/playwright-testing/",
+      "hash": "5c618cd99c79df64",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/postgresql-review/",
+      "hash": "f02cbccffe761446",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/readme-review/",
+      "hash": "25d4486ea4843915",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/rust-development/",
+      "hash": "e809030f7e8253ea",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/security-owasp/",
+      "hash": "b909907ae0e18174",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/security-review/",
+      "hash": "ad8fffb201f42a39",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/spring-boot-scaffold/",
+      "hash": "c789e103015478c7",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/terse-mode/",
+      "hash": "d28a057d860494bb",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/threat-model/",
+      "hash": "8fd0fa04afd9b093",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/tokenx-auth/",
+      "hash": "7afa1c42b4e8e859",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/web-design-reviewer/",
+      "hash": "870a23c81c5528c2",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/workstation-security/",
+      "hash": "93d7292e18b1b82d",
+      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    }
+  ]
+}

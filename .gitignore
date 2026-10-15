@@ -1,0 +1,5 @@
+.idea/
+/explanations/
+.DS_Store
+/.pnpm-store/
+/repos/
