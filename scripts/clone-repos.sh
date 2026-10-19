@@ -7,7 +7,7 @@ REPOS_DIR="$SCRIPT_DIR/../repos"
 mkdir -p "$REPOS_DIR"
 REPOS_DIR="$(cd "$REPOS_DIR" && pwd)"
 
-# Watson repos to clone
+# Team-Pias repos to clone
 REPOS=(
   "https://github.com/navikt/lydia-radgiver-frontend.git"
   "https://github.com/navikt/fia-arbeidsgiver-frontend.git"
