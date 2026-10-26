@@ -1,9 +1,9 @@
 {
   "collection": "nav-pilot",
-  "version": "2026.10.15-102620-ea70da8",
+  "version": "2026.10.25-034335-3e799c9",
   "scope": "repo",
   "source_repo": "navikt/copilot",
-  "source_sha": "ea70da85f0baaded60b739074d7960275f3e64be",
+  "source_sha": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657",
   "installed_at": "2026-10-15T10:40:49Z",
   "files": [
     {
@@ -13,13 +13,13 @@
     },
     {
       "path": ".github/agents/aksel.agent.md",
-      "hash": "700721ce34d631f5",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "c14ba829b924f33c",
+      "revision": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657"
     },
     {
       "path": ".github/agents/code-review.agent.md",
-      "hash": "811b2a6765ff86de",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "fa76255226b84d06",
+      "revision": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657"
     },
     {
       "path": ".github/agents/forfatter.agent.md",
@@ -38,8 +38,8 @@
     },
     {
       "path": ".github/agents/nav-pilot.agent.md",
-      "hash": "2339a650aeb79e66",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "763a798b28967762",
+      "revision": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657"
     },
     {
       "path": ".github/agents/research.agent.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": ".github/agents/worker.agent.md",
-      "hash": "30566b7b3fbd4e84",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "8ca54845d3fa2a73",
+      "revision": "cfedfabbcd17b8a7373b1f5416639328f7d5b350"
     },
     {
       "path": ".github/hooks/ask-first-aria.py",
@@ -113,8 +113,8 @@
     },
     {
       "path": ".github/instructions/nextjs-aksel.instructions.md",
-      "hash": "342cce96431f6ca5",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "0b83049114a7b86a",
+      "revision": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657"
     },
     {
       "path": ".github/instructions/norwegian-text.instructions.md",
@@ -158,8 +158,8 @@
     },
     {
       "path": ".github/prompts/aksel-component.prompt.md",
-      "hash": "fa646ea49f00e34e",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "a86d83671cddc887",
+      "revision": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657"
     },
     {
       "path": ".github/prompts/golang-service.prompt.md",
@@ -198,13 +198,8 @@
     },
     {
       "path": ".github/skills/aksel-builder/",
-      "hash": "3075f3a92c2eb6fc",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
-    },
-    {
-      "path": ".github/skills/aksel-spacing/",
-      "hash": "177594fc5ae8d7e3",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "8bb00941b6cd738a",
+      "revision": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657"
     },
     {
       "path": ".github/skills/api-design/",
@@ -225,6 +220,10 @@
       "path": ".github/skills/deliberate-ai-use/",
       "hash": "c329412b61d8f8c1",
       "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/dependency-upgrade/",
+      "hash": "03b9bf451939b567"
     },
     {
       "path": ".github/skills/flyway-migration/",
@@ -248,8 +247,8 @@
     },
     {
       "path": ".github/skills/klarsprak/",
-      "hash": "d7e22a0fab7b9388",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "618a0dbf98be8b11",
+      "revision": "cfedfabbcd17b8a7373b1f5416639328f7d5b350"
     },
     {
       "path": ".github/skills/kotlin-app-config/",
@@ -278,8 +277,8 @@
     },
     {
       "path": ".github/skills/nav-deep-interview/",
-      "hash": "eeb3399ecd4e352c",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "c830bf6956bda64f",
+      "revision": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657"
     },
     {
       "path": ".github/skills/nav-dekoratoren/",
