@@ -13,6 +13,7 @@ REPOS=(
   "https://github.com/navikt/fia-arbeidsgiver-frontend.git"
   "https://github.com/navikt/lydia-api.git"
   "https://github.com/navikt/fia-arbeidsgiver.git"
+  "https://github.com/navikt/pia-actions"
 )
 
 # Colors
