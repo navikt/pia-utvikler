@@ -1,9 +1,9 @@
 {
   "collection": "nav-pilot",
-  "version": "2026.10.25-034335-3e799c9",
+  "version": "2026.10.27-152604-12f7d1f",
   "scope": "repo",
   "source_repo": "navikt/copilot",
-  "source_sha": "3e799c97cbe2e12d64a6eba72cbf5a79c2e21657",
+  "source_sha": "12f7d1fa9ca902ab47130fa44842077717424cd5",
   "installed_at": "2026-10-15T10:40:49Z",
   "files": [
     {
@@ -98,8 +98,8 @@
     },
     {
       "path": ".github/instructions/github-actions.instructions.md",
-      "hash": "553b61e739b1430d",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "6799f9ac75b7806e",
+      "revision": "12f7d1fa9ca902ab47130fa44842077717424cd5"
     },
     {
       "path": ".github/instructions/golang.instructions.md",
@@ -282,8 +282,8 @@
     },
     {
       "path": ".github/skills/nav-dekoratoren/",
-      "hash": "4b5d432477529d66",
-      "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+      "hash": "6021ae23a432b555",
+      "revision": "12f7d1fa9ca902ab47130fa44842077717424cd5"
     },
     {
       "path": ".github/skills/nav-plan/",
