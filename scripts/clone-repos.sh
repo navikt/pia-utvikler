@@ -9,13 +9,13 @@ REPOS_DIR="$(cd "$REPOS_DIR" && pwd)"
 
 # Team-Pias repos to clone
 REPOS=(
-  "git@github.com:navikt/fia-arbeidsgiver.git"
-  "git@github.com:navikt/fia-arbeidsgiver-frontend.git"
-  "git@github.com:navikt/ia-felles.git"
-  "git@github.com:navikt/lydia-radgiver-frontend.git"
-  "git@github.com:navikt/lydia-api.git"
-  "git@github.com:navikt/pia-actions"
-  "git@github.com:navikt/pia-jobbsender.git"
+  "https://github.com/navikt/fia-arbeidsgiver.git"
+  "https://github.com/navikt/fia-arbeidsgiver-frontend.git"
+  "https://github.com/navikt/ia-felles.git"
+  "https://github.com/navikt/lydia-radgiver-frontend.git"
+  "https://github.com/navikt/lydia-api.git"
+  "https://github.com/navikt/pia-actions"
+  "https://github.com/navikt/pia-jobbsender.git"
 )
 
 # Colors

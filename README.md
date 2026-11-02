@@ -14,6 +14,28 @@ Hvis du bruker Copilot CLI gjennom cplt, kjør [`scripts/setup-cplt-repos.sh`](s
 etter at du har klonet teamets repoer til `repos/`, og før du starter en cplt-sesjon fra `pia-utvikler`.
 Bruker du ikke cplt, trenger du ikke dette steget.
 
+### Logg inn på GitHub med HTTPS
+
+Før du kloner teamets repoer, må du ha GitHub CLI (`gh`) installert og være logget inn
+med HTTPS som Git-protokoll. Vi bruker ikke SSH-nøkler i cplt-sandboksen.
+Sandboksen stenger tilgangen til SSH-nøklene dine, så Git bruker HTTPS med tokenet fra `gh`.
+
+Kjør dette i en vanlig terminal utenfor cplt-sandboksen:
+
+```sh
+gh auth login --hostname github.com --git-protocol https --web
+gh auth setup-git
+gh auth status
+```
+
+`gh auth setup-git` setter opp Git til å bruke innloggingen fra `gh`.
+Se [guiden til Git og GitHub i sandboksen](https://ki-utvikling.nav.no/nav-pilot/guider/cplt-git).
+
+Har du klonet repoene med SSH tidligere, endrer ikke kloneskriptet de eksisterende
+remote-URL-ene. Sjekk med `git remote -v` i hvert repo. Viser den `git@github.com:`,
+følg [guiden for Permission denied (publickey)](https://ki-utvikling.nav.no/nav-pilot/guider/cplt-feilmeldinger#publickey)
+for å bytte til HTTPS utenfor sandboksen.
+
 ### Hvorfor registrere repoene?
 
 Teamets prosjekter er egne Git-repoer under `repos/`. Skriptet registrerer dem i
@@ -32,7 +54,8 @@ Kjør kommandoene fra rotmappen til `pia-utvikler`.
    bash scripts/clone-repos.sh
    ```
 
-   Dette krever Git og SSH-tilgang til GitHub, samt `pnpm` for frontend-prosjektene.
+   Skriptet kloner repoene over HTTPS. Dette krever Git og GitHub-innloggingen over,
+   samt `pnpm` for frontend-prosjektene.
    Skriptet kjører også repoenes eventuelle `setup.sh` og installerer frontend-avhengigheter.
    Repoer som allerede finnes, oppdateres med `git pull --ff-only`.
 
