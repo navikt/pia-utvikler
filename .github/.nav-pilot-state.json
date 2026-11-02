@@ -1,9 +1,9 @@
 {
   "collection": "nav-pilot",
-  "version": "2026.10.29-144316-8eb88c5",
+  "version": "2026.10.31-184428-db7a33c",
   "scope": "repo",
   "source_repo": "navikt/copilot",
-  "source_sha": "8eb88c51fd963ec45dd374f6c2b09f2cdba17343",
+  "source_sha": "db7a33c8c42480d63071f4f91949c0d4b3fa7dbc",
   "installed_at": "2026-10-15T10:40:49Z",
   "files": [
     {
@@ -232,6 +232,10 @@
       "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
     },
     {
+      "path": ".github/skills/innblikk/",
+      "hash": "9739597f3c0a2313"
+    },
+    {
       "path": ".github/skills/jackson-3-migration/",
       "hash": "9b4932b7b9d4a076",
       "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
@@ -283,8 +287,8 @@
     },
     {
       "path": ".github/skills/nav-dekoratoren/",
-      "hash": "6021ae23a432b555",
-      "revision": "12f7d1fa9ca902ab47130fa44842077717424cd5"
+      "hash": "dea560a0615a3e39",
+      "revision": "db7a33c8c42480d63071f4f91949c0d4b3fa7dbc"
     },
     {
       "path": ".github/skills/nav-plan/",
