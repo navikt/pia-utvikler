@@ -12,10 +12,18 @@ REPOS=(
   "https://github.com/navikt/fia-arbeidsgiver.git"
   "https://github.com/navikt/fia-arbeidsgiver-frontend.git"
   "https://github.com/navikt/ia-felles.git"
+  "https://github.com/navikt/ia-tjenester-metrikker.git"
   "https://github.com/navikt/lydia-radgiver-frontend.git"
   "https://github.com/navikt/lydia-api.git"
+  "https://github.com/navikt/min-ia.git"
   "https://github.com/navikt/pia-actions"
   "https://github.com/navikt/pia-jobbsender.git"
+  "https://github.com/navikt/pia-bigquery-sink.git"
+  "https://github.com/navikt/pia-brreg-oppdaterer.git"
+  "https://github.com/navikt/pia-dvh-import.git"
+  "https://github.com/navikt/pia-pdfgen.git"
+  "https://github.com/navikt/pia-survey.git"
+  "https://github.com/navikt/pia-sykefravarsstatistikk.git"
 )
 
 # Colors
