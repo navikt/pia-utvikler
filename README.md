@@ -87,6 +87,38 @@ bash scripts/setup-cplt-repos.sh --list
 
 ---
 
+## Periodisk oppgradering av backend-avhengigheter
+
+Annenhver uke kan du bruke Copilot fra roten av `pia-utvikler` til å oppgradere
+backend-avhengighetene i teamets repoer under `repos/`. Repoene må være klonet.
+Du trenger Git, GitHub CLI, riktig JDK for hvert repo og Docker for integrasjonstester.
+Bruker du cplt, må repoene være registrert som beskrevet over.
+
+Skriv:
+
+```text
+Kjør den periodiske backend-oppgraderingen. Bruk pia-dependency-upgrade.
+```
+
+Du kan også bruke [startprompten pia-oppgrader-backend](.github/prompts/pia-oppgrader-backend.prompt.md).
+[Skillen pia-dependency-upgrade](.github/skills/pia-dependency-upgrade/SKILL.md)
+beskriver repo-utvalg, versjonskontroll og arbeidsflyt. Den finner nye publiserte
+versjoner hver runde, uten å bruke versjonsmål fra tidligere samtaler.
+
+Copilot tester ett repo om gangen og stopper for review. Du godkjenner commit,
+pusher selv og gir beskjed før arbeidet fortsetter med neste repo.
+`ia-felles` holdes utenfor. Majoroppgraderinger krever egen godkjenning og egne
+commits; container-images, CI og verktøypinner inngår ikke i rutinerunden.
+
+Ved overlevering til en annen utvikler: lagre rundens status i et GitHub-issue
+i `navikt/pia-utvikler`, og oppgi issuet når arbeidet gjenopptas.
+Statusen skal vise versjonsmål, testresultater, commits, bekreftede push og
+utsatte oppgraderinger per repo. Skillen inneholder formatet.
+Følg [rundens statusformat](.github/skills/pia-dependency-upgrade/SKILL.md#5-status-og-overlevering)
+også for repoer som allerede er oppdaterte eller er blokkert.
+
+---
+
 ## Portefølje
 
 | Repo                                                                             | Teknologi           | Beskrivelse                                                      | Dokumentasjon |
