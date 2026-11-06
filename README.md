@@ -8,11 +8,7 @@ Inngangsport og utviklermiljø for utvikler i **Team Pia**.
 
 Denne repoen inneholder dokumentasjon for utviklere som ønsker å bidra til Team Pia sine prosjekter.
 
-## Kom i gang med cplt
-
-Hvis du bruker Copilot CLI gjennom cplt, kjør [`scripts/setup-cplt-repos.sh`](scripts/setup-cplt-repos.sh)
-etter at du har klonet teamets repoer til `repos/`, og før du starter en cplt-sesjon fra `pia-utvikler`.
-Bruker du ikke cplt, trenger du ikke dette steget.
+## Kom i gang med nav-pilot
 
 ### Logg inn på GitHub med HTTPS
 
