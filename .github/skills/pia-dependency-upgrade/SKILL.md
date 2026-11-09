@@ -48,6 +48,13 @@ publiserte releaser, ikke versjoner fra en tidligere samtale.
   alpha-/beta-versjon, behold den versjonslinjen og kontroller oppdateringer der.
 - Les relevante release-notater. Rapporter brudd og usikkerhet før endring.
   En nyere versjon er ikke i seg selv et bekreftet sikkerhetsfunn.
+- Gjenbruk release-vurderingen for samme koordinat og målversjon innenfor runden.
+  Registrer kilder, kompatibilitetsendringer og hva utvikleren har godkjent.
+  Vurder på nytt hvis et repo har andre relevante forutsetninger.
+- Avgrens letingen etter release-notater til offisiell release-historikk,
+  upstream-releaser og changelog. Hvis målversjonen mangler der, marker
+  oppgraderingen som utsatt med kildene som er sjekket. Ikke gjenta letingen
+  i senere repoer uten nye opplysninger.
 - Lag en felles måltabell for runden med koordinat, nåværende versjoner,
   verifisert målversjon og kilde. Ikke nedgrader repoer som allerede ligger foran.
   Avklar eventuelle konflikter mellom majorversjoner.
@@ -103,6 +110,10 @@ Bruk riktig JDK og kontroller at Docker er tilgjengelig før integrasjonstester.
 - Kontroller faktisk oppløste runtime- og testversjoner etter endringen.
   Sjekk også tilknyttede moduler, som Jackson core/databind, Logback core/classic,
   Flyway og Testcontainers. Deklarerte versjoner alene er ikke tilstrekkelig.
+- Sammenlign modulfamiliene før og etter endringen. Skill nye blandinger av
+  modulversjoner fra dem som allerede fantes. Ikke innfør en BOM, som Netty-BOM,
+  automatisk for å samordne en eksisterende blanding. Avtal det som en separat
+  endring. Beståtte tester beviser ikke at alle modulkombinasjoner er kompatible.
 - Kontroller `git diff --check`, diffen og Git-status, inkludert nye filer.
   Ingen filer utenfor den avtalte endringen skal stages eller committes.
 - Registrer nye advarsler eller kompatibilitetsrisikoer. Rapporter hvilke
@@ -114,6 +125,8 @@ operasjonen. Ikke prøv å omgå avslaget eller les hemmeligheter for å løse d
 ## 4. Review, commit og push
 
 Vis en tabell med avhengighet, fra-versjon, valgt versjon og status.
+Bruk faktisk oppløste versjoner før og etter i tabellen. Hvis en deklarert
+versjon eller constraint avviker fra den oppløste versjonen, oppgi begge.
 Oppgi endrede filer, verifiseringskommandoer med resultat og utsatte oppgraderinger.
 Stopp for utviklerens review før commit.
 
@@ -125,6 +138,12 @@ Commit bare de godkjente filene med Conventional Commits og påkrevd
 Oppgi commit-hash og Git-status. Ikke push. Vent til utvikleren bekrefter at
 endringen er pushet og ber om neste repo. En forespørsel om å starte runden
 er ikke godkjenning av commits eller push.
+
+Skill mellom lokalt bygg, CI og deployment i statusen. Et bestått lokalt bygg
+betyr ikke at deployment har lykkes. Etter push kontrollerer du relevante
+workflow-resultater hvis det er avtalt med utvikleren. Ellers oppgir du at de
+ikke er kontrollert. Hold deployfikser i separat avtalte oppgaver og commits,
+uten å utvide avhengighetsoppgraderingen.
 
 ## 5. Status og overlevering
 
