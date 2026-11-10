@@ -113,6 +113,34 @@ utsatte oppgraderinger per repo. Skillen inneholder formatet.
 Følg [rundens statusformat](.github/skills/pia-dependency-upgrade/SKILL.md#5-status-og-overlevering)
 også for repoer som allerede er oppdaterte eller er blokkert.
 
+## Avhengighetsoppgradering for datafortellinger
+
+Skillen `pia-datafortelling-avhengighetsoppgradering` hjelper med
+oppgradering av Python-avhengigheter og patching av sårbarheter.
+Den bruker prod-copy når prosjektet har det, ellers eksisterende deploy-løp.
+
+### Ta skillen i bruk
+
+1. Kopier mappen `.github/skills/pia-datafortelling-avhengighetsoppgradering`
+   fra dette repoet til `.github/skills/` i datafortelling-prosjektet.
+2. Åpne målprosjektet i VS Code med GitHub Copilot, eller start Copilot CLI
+   fra prosjektmappen. Start en ny samtale etter kopieringen.
+3. Be assistenten:
+
+> Bruk pia-datafortelling-avhengighetsoppgradering til neste
+> vedlikeholdsrunde. Start med å kartlegge HIGH-sårbarheter og avklare
+> omfanget før endringer. Jeg pusher og merger selv.
+
+### Forutsetninger
+
+Prosjektet bruker Python, uv og Quarto. Følg prosjektets eget oppsett
+for installasjon og nødvendige tilganger. GitHub CLI (`gh`) må være
+innlogget for å hente sårbarhetsvarsler.
+
+Skillen er en arbeidsoppskrift for assistenten, ikke en automatisk
+periodisk jobb. Utvikleren kontrollerer innholdet etter deployment
+og godkjenner eventuell merge.
+
 ---
 
 ## Portefølje
