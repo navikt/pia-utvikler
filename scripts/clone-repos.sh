@@ -24,6 +24,7 @@ REPOS=(
   "https://github.com/navikt/pia-bigquery-sink.git"
   "https://github.com/navikt/pia-brreg-oppdaterer.git"
   "https://github.com/navikt/pia-dvh-import.git"
+  "https://github.com/navikt/pia-frontend-monorepo.git"
   "https://github.com/navikt/pia-jobbsender.git"
   "https://github.com/navikt/pia-pdfgen.git"
   "https://github.com/navikt/pia-survey.git"
