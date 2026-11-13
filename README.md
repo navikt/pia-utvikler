@@ -83,6 +83,18 @@ bash scripts/setup-cplt-repos.sh --list
 
 ---
 
+## Morgenoppsett
+
+Kobler til naisdevice, logger inn i Nais og kjører `brew update && brew upgrade`.
+Kjør skriptet fra rotmappen til `pia-utvikler` i en vanlig terminal utenfor cplt-sandboksen,
+siden Homebrew ikke kan skrive der:
+
+```sh
+bash scripts/morning-setup.sh
+```
+
+---
+
 ## Periodisk oppgradering av backend-avhengigheter
 
 Annenhver uke kan du bruke Copilot fra roten av `pia-utvikler` til å oppgradere
