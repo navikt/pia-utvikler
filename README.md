@@ -157,25 +157,30 @@ og godkjenner eventuell merge.
 
 ## Portefølje
 
-| Repo                                                                       | Teknologi            | Beskrivelse                                                            | Dokumentasjon |
-|----------------------------------------------------------------------------|----------------------|------------------------------------------------------------------------|---------------|
-| [fia-arbeidsgiver](https://github.com/navikt/fia-arbeidsgiver)                 | Kotlin + Ktor        | Backend for arbeidsgivere i Fia                                         |               |
-| [fia-arbeidsgiver-frontend](https://github.com/navikt/fia-arbeidsgiver-frontend) | TypeScript + Next.js | Frontend for kartlegginger i Fia                                        |               |
-| [fia-dokument-publisering](https://github.com/navikt/fia-dokument-publisering) | Kotlin + Ktor        | Deling og arkivering av Fia-dokumenter til arbeidsgivere                 |               |
-| [forebyggingsplan](https://github.com/navikt/forebyggingsplan)                 | Kotlin + Ktor        | Backend for forebyggingsplan                                            |               |
-| [ia-felles](https://github.com/navikt/ia-felles)                               | Kotlin               | Bibliotek med felles definisjoner for IA-domenet                         |               |
-| [ia-tjenester-metrikker](https://github.com/navikt/ia-tjenester-metrikker)     | Kotlin + Spring Boot | Mottar og lagrer metrikker fra IA-applikasjoner                          |               |
-| [lydia-api](https://github.com/navikt/lydia-api)                               | Kotlin + Ktor        | Backend for fagsystemet Fia: IA-samarbeid med virksomheter i Norge        |               |
-| [lydia-radgiver-frontend](https://github.com/navikt/lydia-radgiver-frontend)   | TypeScript + Vite    | Frontend for fagsystemet Fia                                            |               |
-| [min-ia](https://github.com/navikt/min-ia)                                     | TypeScript + Next.js | Landingsside for selvbetjente IA-tjenester                               |               |
-| [pia-actions](https://github.com/navikt/pia-actions)                           | GitHub Actions       | Gjenbrukbare actions for Team Pia                                       |               |
-| [pia-bigquery-sink](https://github.com/navikt/pia-bigquery-sink)               | Kotlin + Ktor        | Lagrer Kafka-meldinger i BigQuery                                        |               |
-| [pia-brreg-oppdaterer](https://github.com/navikt/pia-brreg-oppdaterer)         | Kotlin               | Naisjob som henter virksomhetsoppdateringer fra Brønnøysundregistrene     |               |
-| [pia-dvh-import](https://github.com/navikt/pia-dvh-import)                     | Kotlin + Ktor        | Leser kvartalsvis sykefraværsstatistikk fra DVH                          |               |
-| [pia-jobbsender](https://github.com/navikt/pia-jobbsender)                     | Kotlin               | Naisjob som sender forespørsler om engangsjobber via Kafka               |               |
-| [pia-pdfgen](https://github.com/navikt/pia-pdfgen)                             | pdfgenrs + Handlebars | PDF-generator for dokumenter fra Fia                                    |               |
-| [pia-survey](https://github.com/navikt/pia-survey)                             | Kotlin + Ktor        | Backend for spørreundersøkelser                                         |               |
-| [pia-sykefravarsstatistikk](https://github.com/navikt/pia-sykefravarsstatistikk) | Kotlin + Ktor        | API for sykefraværsstatistikk                                            |               |
+Team er angitt med teamnavnet i Nais (namespace for deployede applikasjoner).
+
+| Repo                                                                       | Team           | Teknologi            | Beskrivelse                                                            | Dokumentasjon |
+|----------------------------------------------------------------------------|----------------|----------------------|------------------------------------------------------------------------|---------------|
+| [fia-arbeidsgiver](https://github.com/navikt/fia-arbeidsgiver)                 | `pia`          | Kotlin + Ktor        | Backend for arbeidsgivere i Fia                                         |               |
+| [fia-arbeidsgiver-frontend](https://github.com/navikt/fia-arbeidsgiver-frontend) | `pia`          | TypeScript + Next.js | Frontend for kartlegginger i Fia                                        |               |
+| [fia-datafortelling](https://github.com/navikt/fia-datafortelling)             | `pia`          | Python + Quarto      | Datafortelling basert på data fra fagsystemet Fia                        |               |
+| [fia-dokument-publisering](https://github.com/navikt/fia-dokument-publisering) | `pia`          | Kotlin + Ktor        | Deling og arkivering av Fia-dokumenter til arbeidsgivere                 |               |
+| [forebyggingsplan](https://github.com/navikt/forebyggingsplan)                 | `teamia`       | Kotlin + Ktor        | Backend for forebyggingsplan                                            |               |
+| [ia-datafortelling](https://github.com/navikt/ia-datafortelling)               | `teamia`       | Python + Quarto      | Datafortelling over leverte digitale, selvbetjente IA-tjenester           |               |
+| [ia-felles](https://github.com/navikt/ia-felles)                               | `pia`          | Kotlin               | Bibliotek med felles definisjoner for IA-domenet                         |               |
+| [ia-tjenester-metrikker](https://github.com/navikt/ia-tjenester-metrikker)     | `arbeidsgiver` | Kotlin + Spring Boot | Mottar og lagrer metrikker fra IA-applikasjoner                          |               |
+| [lydia-api](https://github.com/navikt/lydia-api)                               | `pia`          | Kotlin + Ktor        | Backend for fagsystemet Fia: IA-samarbeid med virksomheter i Norge        |               |
+| [lydia-radgiver-frontend](https://github.com/navikt/lydia-radgiver-frontend)   | `pia`          | TypeScript + Vite    | Frontend for fagsystemet Fia                                            |               |
+| [min-ia](https://github.com/navikt/min-ia)                                     | `pia`          | TypeScript + Next.js | Landingsside for selvbetjente IA-tjenester                               |               |
+| [pia-actions](https://github.com/navikt/pia-actions)                           | `pia`          | GitHub Actions       | Gjenbrukbare actions for Team Pia                                       |               |
+| [pia-bigquery-sink](https://github.com/navikt/pia-bigquery-sink)               | `pia`          | Kotlin + Ktor        | Lagrer Kafka-meldinger i BigQuery                                        |               |
+| [pia-brreg-oppdaterer](https://github.com/navikt/pia-brreg-oppdaterer)         | `pia`          | Kotlin               | Naisjob som henter virksomhetsoppdateringer fra Brønnøysundregistrene     |               |
+| [pia-dvh-import](https://github.com/navikt/pia-dvh-import)                     | `pia`          | Kotlin + Ktor        | Leser kvartalsvis sykefraværsstatistikk fra DVH                          |               |
+| [pia-frontend-monorepo](https://github.com/navikt/pia-frontend-monorepo)       | `pia`          | TypeScript + pnpm    | Felles workspace for Fia arbeidsgiver, Lydia rådgiver og Min IA          |               |
+| [pia-jobbsender](https://github.com/navikt/pia-jobbsender)                     | `pia`          | Kotlin               | Naisjob som sender forespørsler om engangsjobber via Kafka               |               |
+| [pia-pdfgen](https://github.com/navikt/pia-pdfgen)                             | `pia`          | pdfgenrs + Handlebars | PDF-generator for dokumenter fra Fia                                    |               |
+| [pia-survey](https://github.com/navikt/pia-survey)                             | `pia`          | Kotlin + Ktor        | Backend for spørreundersøkelser                                         |               |
+| [pia-sykefravarsstatistikk](https://github.com/navikt/pia-sykefravarsstatistikk) | `pia`          | Kotlin + Ktor        | API for sykefraværsstatistikk                                            |               |
 
 ---
 
