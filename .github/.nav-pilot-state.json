@@ -1,9 +1,9 @@
 {
   "collection": "nav-pilot",
-  "version": "2026.11.18-092411-4d094a1",
+  "version": "2026.11.20-125605-3cee7c7",
   "scope": "repo",
   "source_repo": "navikt/copilot",
-  "source_sha": "4d094a1e09c5078d5fcb1583eccb074c9dfbe930",
+  "source_sha": "3cee7c737cd8b168d9f9451d9ed81eb20aec705d",
   "installed_at": "2026-10-15T10:40:49Z",
   "files": [
     {
@@ -268,6 +268,10 @@
       "path": ".github/skills/ktor-scaffold/",
       "hash": "68b1ffff9f769c0a",
       "revision": "b4e43f5a8be08fb53310aa952c26c67e0d195b00"
+    },
+    {
+      "path": ".github/skills/mcp-server-authoring/",
+      "hash": "d5bd23612defb37c"
     },
     {
       "path": ".github/skills/nais/",
