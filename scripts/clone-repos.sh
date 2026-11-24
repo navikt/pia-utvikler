@@ -1,16 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefail
-
-# Resolve repos-katalogen (der sibling-repoer klones), oppretter den om nødvendig
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPOS_DIR="$SCRIPT_DIR/../repos"
-mkdir -p "$REPOS_DIR"
-REPOS_DIR="$(cd "$REPOS_DIR" && pwd)"
 
 # Team-Pias repos to clone
 REPOS=(
   "https://github.com/navikt/fia-arbeidsgiver.git"
-  "https://github.com/navikt/fia-arbeidsgiver-frontend.git"
   "https://github.com/navikt/fia-datafortelling.git"
   "https://github.com/navikt/fia-dokument-publisering.git"
   "https://github.com/navikt/forebyggingsplan.git"
@@ -18,8 +10,6 @@ REPOS=(
   "https://github.com/navikt/ia-felles.git"
   "https://github.com/navikt/ia-tjenester-metrikker.git"
   "https://github.com/navikt/lydia-api.git"
-  "https://github.com/navikt/lydia-radgiver-frontend.git"
-  "https://github.com/navikt/min-ia.git"
   "https://github.com/navikt/pia-actions"
   "https://github.com/navikt/pia-bigquery-sink.git"
   "https://github.com/navikt/pia-brreg-oppdaterer.git"
@@ -30,15 +20,6 @@ REPOS=(
   "https://github.com/navikt/pia-survey.git"
   "https://github.com/navikt/pia-sykefravarsstatistikk.git"
 )
-
-# Colors
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-RED='\033[0;31m'
-NC='\033[0m'
-
-echo "📁 Kloner pia-repoer til: $REPOS_DIR"
-echo ""
 
 clone_repo() {
   local repo_url="$1"
@@ -65,44 +46,71 @@ clone_repo() {
     fi
   fi
 
-  # Run setup.sh if it exists in the cloned repo
   if [ -f "$repo_path/setup.sh" ]; then
     echo -e "  ${YELLOW}⚙${NC}  Kjører setup.sh..."
     (cd "$repo_path" && bash setup.sh)
   fi
 
-  if [[ "$repo_name" == "fia-arbeidsgiver-frontend" || "$repo_name" == "lydia-radgiver-frontend" ]]; then
+  if [[ "$repo_name" == "pia-frontend-monorepo" ]]; then
     echo -e "  ${YELLOW}📦${NC} Installerer frontend-avhengigheter..."
     (cd "$repo_path" && pnpm install --frozen-lockfile)
   fi
 }
 
-temp_dir="$(mktemp -d)"
-trap 'rm -rf "$temp_dir"' EXIT
-pids=()
-output_files=()
+clone_main() {
+  set -euo pipefail
 
-for repo_url in "${REPOS[@]}"; do
-  repo_name=$(basename "$repo_url" .git)
-  output_file="$temp_dir/$repo_name"
+  local script_dir
+  local repos_dir
+  local repo_url
+  local repo_name
+  local output_file
+  local failed=0
+  local i
+  local -a pids=()
+  local -a output_files=()
 
-  clone_repo "$repo_url" >"$output_file" 2>&1 &
-  pids+=("$!")
-  output_files+=("$output_file")
-done
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  repos_dir="$script_dir/../repos"
+  mkdir -p "$repos_dir"
+  REPOS_DIR="$(cd "$repos_dir" && pwd)"
 
-failed=0
-for i in "${!pids[@]}"; do
-  if ! wait "${pids[$i]}"; then
-    failed=$((failed + 1))
+  GREEN='\033[0;32m'
+  YELLOW='\033[0;33m'
+  RED='\033[0;31m'
+  NC='\033[0m'
+
+  echo "📁 Kloner pia-repoer til: $REPOS_DIR"
+  echo ""
+
+  temp_dir="$(mktemp -d)"
+  trap 'rm -rf "$temp_dir"' EXIT
+
+  for repo_url in "${REPOS[@]}"; do
+    repo_name=$(basename "$repo_url" .git)
+    output_file="$temp_dir/$repo_name"
+
+    clone_repo "$repo_url" >"$output_file" 2>&1 &
+    pids+=("$!")
+    output_files+=("$output_file")
+  done
+
+  for i in "${!pids[@]}"; do
+    if ! wait "${pids[$i]}"; then
+      failed=$((failed + 1))
+    fi
+    cat "${output_files[$i]}"
+  done
+
+  echo ""
+  if [ "$failed" -gt 0 ]; then
+    echo -e "${RED}✗${NC} Ferdig med $failed feil"
+    exit 1
   fi
-  cat "${output_files[$i]}"
-done
 
-echo ""
-if [ "$failed" -gt 0 ]; then
-  echo -e "${RED}✗${NC} Ferdig med $failed feil"
-  exit 1
+  echo "✅ Ferdig!"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  clone_main "$@"
 fi
-
-echo "✅ Ferdig!"
