@@ -51,8 +51,9 @@ Kjør kommandoene fra rotmappen til `pia-utvikler`.
    ```
 
    Skriptet kloner repoene over HTTPS. Dette krever Git og GitHub-innloggingen over,
-   samt `pnpm` for frontend-prosjektene.
-   Skriptet kjører også repoenes eventuelle `setup.sh` og installerer frontend-avhengigheter.
+   samt `pnpm` for `pia-frontend-monorepo`.
+   Skriptet kjører også repoenes eventuelle `setup.sh` og installerer frontend-avhengigheter
+   med `pnpm install --frozen-lockfile` i monorepoet.
    Repoer som allerede finnes, oppdateres med `git pull --ff-only`.
 
 2. Se hvilke repoer som vil bli registrert, uten å endre konfigurasjonen:
@@ -80,6 +81,33 @@ Se hvilke repoer under `repos/` som er registrert i den lokale konfigurasjonen:
 ```sh
 bash scripts/setup-cplt-repos.sh --list
 ```
+
+### Rydd opp i repoer som ikke lenger brukes
+
+Frontendene `fia-arbeidsgiver-frontend`, `lydia-radgiver-frontend` og `min-ia`
+ligger nå i `pia-frontend-monorepo`. De gamle utsjekkene trengs ikke lenger.
+
+Kjør fra en vanlig terminal utenfor cplt-sandboksen:
+
+```sh
+bash scripts/rydd-opp-repo.sh
+```
+
+Skriptet bruker repo-listen i `scripts/clone-repos.sh` og viser første Git-repo
+direkte under `repos/` som ikke står i listen. Velg `1` for å hoppe over og
+se neste repo, `2` for å rydde opp eller `3` for å avbryte.
+
+Oppryddingen stopper ved lokale endringer, untracked filer, stash eller commits
+som ikke finnes på noen remote. Skriptet henter branches og tags fra hver remote
+i et midlertidig kontrollrepo. Lokale tags og trackingrefs endres ikke, og gamle
+trackingrefs brukes ikke som bevis på at arbeidet er pushet.
+Hvis hentingen feiler, eller ingen remote refs kan hentes, beholder skriptet mappen.
+Symbolske lenker, worktrees og repoer med submoduler eller lokale submoduldata slettes ikke.
+
+Skriptet viser hele stien til mappen. Du må svare `ja` eller `j` før det fjerner
+registreringene i lokal cplt-konfigurasjon og sletter mappen. Ignorerte filer slettes også.
+Slettingen kan ikke angres. Skriptet rydder opp i ett repo per kjøring og krever
+Git, cplt og Python 3.11 eller nyere.
 
 ---
 
@@ -162,7 +190,6 @@ Team er angitt med teamnavnet i Nais (namespace for deployede applikasjoner).
 | Repo                                                                       | Team           | Teknologi            | Beskrivelse                                                            | Dokumentasjon |
 |----------------------------------------------------------------------------|----------------|----------------------|------------------------------------------------------------------------|---------------|
 | [fia-arbeidsgiver](https://github.com/navikt/fia-arbeidsgiver)                 | `pia`          | Kotlin + Ktor        | Backend for arbeidsgivere i Fia                                         |               |
-| [fia-arbeidsgiver-frontend](https://github.com/navikt/fia-arbeidsgiver-frontend) | `pia`          | TypeScript + Next.js | Frontend for kartlegginger i Fia                                        |               |
 | [fia-datafortelling](https://github.com/navikt/fia-datafortelling)             | `pia`          | Python + Quarto      | Datafortelling basert på data fra fagsystemet Fia                        |               |
 | [fia-dokument-publisering](https://github.com/navikt/fia-dokument-publisering) | `pia`          | Kotlin + Ktor        | Deling og arkivering av Fia-dokumenter til arbeidsgivere                 |               |
 | [forebyggingsplan](https://github.com/navikt/forebyggingsplan)                 | `teamia`       | Kotlin + Ktor        | Backend for forebyggingsplan                                            |               |
@@ -170,8 +197,6 @@ Team er angitt med teamnavnet i Nais (namespace for deployede applikasjoner).
 | [ia-felles](https://github.com/navikt/ia-felles)                               | `pia`          | Kotlin               | Bibliotek med felles definisjoner for IA-domenet                         |               |
 | [ia-tjenester-metrikker](https://github.com/navikt/ia-tjenester-metrikker)     | `arbeidsgiver` | Kotlin + Spring Boot | Mottar og lagrer metrikker fra IA-applikasjoner                          |               |
 | [lydia-api](https://github.com/navikt/lydia-api)                               | `pia`          | Kotlin + Ktor        | Backend for fagsystemet Fia: IA-samarbeid med virksomheter i Norge        |               |
-| [lydia-radgiver-frontend](https://github.com/navikt/lydia-radgiver-frontend)   | `pia`          | TypeScript + Vite    | Frontend for fagsystemet Fia                                            |               |
-| [min-ia](https://github.com/navikt/min-ia)                                     | `pia`          | TypeScript + Next.js | Landingsside for selvbetjente IA-tjenester                               |               |
 | [pia-actions](https://github.com/navikt/pia-actions)                           | `pia`          | GitHub Actions       | Gjenbrukbare actions for Team Pia                                       |               |
 | [pia-bigquery-sink](https://github.com/navikt/pia-bigquery-sink)               | `pia`          | Kotlin + Ktor        | Lagrer Kafka-meldinger i BigQuery                                        |               |
 | [pia-brreg-oppdaterer](https://github.com/navikt/pia-brreg-oppdaterer)         | `pia`          | Kotlin               | Naisjob som henter virksomhetsoppdateringer fra Brønnøysundregistrene     |               |
