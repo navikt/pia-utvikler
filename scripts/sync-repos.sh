@@ -5,8 +5,13 @@ set -euo pipefail
 # nyeste endringer i pia-utvikler og alle git-repoer i repos-mappen.
 # Idempotent og trygt å kjøre flere ganger.
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+if [ "${__CPLT_WRAPPED+x}" = x ]; then
+  echo "Kjør sync.sh i en vanlig terminal utenfor cplt-sandboksen." >&2
+  exit 1
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+ROOT_REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd -P)"
 REPOS_DIR="$ROOT_REPO_DIR/repos"
 mkdir -p "$REPOS_DIR"
 REPOS_DIR="$(cd "$REPOS_DIR" && pwd)"
@@ -96,14 +101,20 @@ for i in "${!pids[@]}"; do
   sed 's/^/  /' "${output_files[$i]}"
 done
 
+node_failed=0
+if ! python3 "$SCRIPT_DIR/frontend-node.py" check "$ROOT_REPO_DIR"; then
+  echo -e "${RED}✗${NC} Node-kontrollen feilet. Rett avviket før du starter en ny cplt-økt." >&2
+  node_failed=1
+fi
+
 echo ""
 if [ "$found" -eq 0 ]; then
   echo -e "${YELLOW}⟳${NC} Fant ingen git-repoer i $REPOS_DIR eller i $ROOT_REPO_DIR"
   exit 0
 fi
 
-if [ "$failed" -gt 0 ]; then
-  echo -e "${RED}✗${NC} Ferdig med $failed feil"
+if [ "$failed" -gt 0 ] || [ "$node_failed" -gt 0 ]; then
+  echo -e "${RED}✗${NC} Ferdig med $failed synkroniseringsfeil og $node_failed feil i Node-kontrollen"
   exit 1
 fi
 
