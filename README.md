@@ -41,8 +41,9 @@ Skriptet kloner ingen repoer og endrer ikke kildekoden.
 
 ### Slik kjører du skriptet
 
-Bruk en vanlig terminal utenfor cplt-sandboksen. Du må ha `cplt` og Python 3.11 eller nyere i `PATH`.
-Kjør kommandoene fra rotmappen til `pia-utvikler`.
+Bruk en vanlig terminal utenfor cplt-sandboksen. Du må ha `cplt`, Python 3.11 eller nyere
+og en Node-versjon som oppfyller monorepoets krav i `PATH`.
+Kjør kommandoene fra rotmappen til `pia-utvikler` før du starter Copilot/nav-pilot.
 
 1. Klon teamets repoer hvis du ikke allerede har dem under `repos/`:
 
@@ -56,7 +57,7 @@ Kjør kommandoene fra rotmappen til `pia-utvikler`.
    med `pnpm install --frozen-lockfile` i monorepoet.
    Repoer som allerede finnes, oppdateres med `git pull --ff-only`.
 
-2. Se hvilke repoer som vil bli registrert, uten å endre konfigurasjonen:
+2. Se foreslåtte repo-registreringer, Docker-godkjenning og Node-tillatelse uten å lagre noe:
 
    ```sh
    bash scripts/setup-cplt-repos.sh --dry-run
@@ -68,12 +69,39 @@ Kjør kommandoene fra rotmappen til `pia-utvikler`.
    bash scripts/setup-cplt-repos.sh
    ```
 
-   Kontroller listen og svar `y` på bekreftelsen. Start deretter en ny cplt-sesjon fra `pia-utvikler`.
+   Kontroller listen og svar `y` på bekreftelsen. Start deretter en ny cplt-økt fra `pia-utvikler`.
+
+Skriptet kontrollerer Node-kravene i monorepoet og workspace-pakkene. Det kjører Node
+fra disse mappene og bruker `process.execPath` for å finne den faktiske binæren,
+ikke bare launcheren i `PATH`. Ingen Node-versjon installeres automatisk.
+
+Hvis tillatelsen mangler, tilbyr skriptet lokal `allow.exec` for den konkrete filstien.
+cplt krever `--force` for denne tillatelsen. Skriptet bruker flagget først etter
+bekreftelsen og forsøker ikke en bredere katalogtillatelse hvis cplt avviser stien.
+Eksisterende tillatelser beholdes.
+
+### Før senere utviklingsøkter
+
+Kjør dette i en vanlig terminal utenfor cplt, før du starter Copilot/nav-pilot:
+
+```sh
+./sync.sh
+```
+
+Etter synkroniseringen kontrollerer skriptet at lokal Node oppfyller kravene, og at
+den faktiske binæren har en lagret exec-tillatelse. Ved avvik avslutter det med feil.
+Oppdater lokal Node hvis versjonen er feil. Hvis tillatelsen mangler, kjør
+`bash scripts/setup-cplt-repos.sh` igjen før du starter en ny cplt-økt.
+Sync installerer ikke Node og endrer ingen tillatelser.
+
+Kontrollen gjelder lagret konfigurasjon. cplt kan fortsatt avvise tillatelsen ved
+oppstart, for eksempel hvis stien overlapper en skrivbar mappe.
 
 ### Når må du kjøre det igjen?
 
-Kjør skriptet på nytt når du legger til Git-repoer direkte under `repos/`, eller flytter
-arbeidsområdet til en ny sti. Du trenger ikke kjøre det før hver økt eller etter en vanlig `git pull`.
+Kjør `scripts/setup-cplt-repos.sh` på nytt når du legger til Git-repoer direkte under `repos/`, eller flytter
+arbeidsområdet til en ny sti. Kjør det også hvis en Node-oppgradering endrer binærstien
+og sync melder at tillatelsen mangler. Du trenger ikke kjøre setup før hver økt.
 Skriptet hopper over symbolske lenker og søker ikke i undermapper av repoene.
 
 Se hvilke repoer under `repos/` som er registrert i den lokale konfigurasjonen:

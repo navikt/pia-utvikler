@@ -12,10 +12,11 @@ case "${1:-}" in
     echo "Bruk: ./scripts/setup-cplt-repos.sh [--dry-run|--list|--revoke-docker]"
     echo "Registrerer Git-repoer direkte under repos/ i lokal cplt-konfigurasjon."
     echo "Legger bare til manglende repoer og godkjenner Docker-forslaget hvis godkjenningen mangler."
+    echo "Kontrollerer Node i frontend-monorepoet og tilbyr lokal exec-tillatelse for den faktiske binæren."
     echo "--list viser kun repoene under repos/ som allerede er registrert."
     echo "--revoke-docker trekker tilbake hovedrepoets Docker-godkjenning uten å endre repo-registreringene."
     echo "Tilbakekallingen gjelder fremtidige økter. Kjørende økter og andre lokale eller globale Docker-tillatelser påvirkes ikke."
-    echo "Kjør utenfor cplt-sandboksen. --dry-run viser registrering og Docker-godkjenning uten å endre noe."
+    echo "Kjør utenfor cplt-sandboksen. --dry-run viser alle endringer uten å lagre noe."
     exit 0
     ;;
   "")
@@ -60,7 +61,7 @@ run_cplt() {
   fi
 }
 
-if [ -n "${__CPLT_WRAPPED:-}" ]; then
+if [ "${__CPLT_WRAPPED+x}" = x ]; then
   info "Kjør skriptet i en vanlig terminal utenfor cplt-sandboksen." >&2
   exit 1
 fi
@@ -169,6 +170,12 @@ while IFS= read -r repo_path; do
   fi
 done <<< "$repo_output"
 
+node_output="$(python3 "$SCRIPT_DIR/frontend-node.py" inspect "$ROOT_REPO_DIR")"
+node_runtime="$(python3 -c 'import json,sys; print(json.dumps(json.loads(sys.argv[1])["runtime"]))' "$node_output")"
+node_path="$(python3 -c 'import json,sys; print(json.loads(sys.argv[1])["runtime"]["path"])' "$node_output")"
+node_version="$(python3 -c 'import json,sys; print(json.loads(sys.argv[1])["runtime"]["version"])' "$node_output")"
+node_permitted="$(python3 -c 'import json,sys; print(str(json.loads(sys.argv[1])["permitted"]).lower())' "$node_output")"
+
 if ! global_config="$(run_cplt capture config path)"; then
   info "Kunne ikke finne stien til global cplt-konfigurasjon." >&2
   exit 1
@@ -234,6 +241,12 @@ PY
 
 printf '\n'
 info "Status"
+info "Faktisk Node-binær ($node_version): $node_path"
+if [ "$node_permitted" = true ]; then
+  info "Lagret exec-tillatelse er funnet for Node-binæren."
+else
+  info "Node-binæren mangler lagret exec-tillatelse."
+fi
 if [ "${#missing_repos[@]}" -eq 0 ]; then
   info "Alle ${#repo_paths[@]} repoer under repos/ er registrert."
 else
@@ -259,13 +272,18 @@ case "$global_docker" in
     info "Skriptet endrer ikke den globale innstillingen."
     ;;
 esac
-if [ "${#missing_repos[@]}" -eq 0 ] && [ "$docker_approved" = true ]; then
+if [ "${#missing_repos[@]}" -eq 0 ] && [ "$docker_approved" = true ] && [ "$node_permitted" = true ]; then
   info "Ingen konfigurasjon må lagres. Ingen skrivekommandoer kjøres."
   exit 0
 fi
 
 printf '\n'
 info "Endringer som gjenstår"
+if [ "$node_permitted" = false ]; then
+  info "Gi lokal allow.exec bare for denne filen: $node_path"
+  info "Tillatelsen gir lesing og kjøring, ikke skriving. cplt krever --force."
+  info "Eksisterende tillatelser beholdes. Ingen katalogtillatelse legges til."
+fi
 if [ "${#missing_repos[@]}" -gt 0 ]; then
   info "Registrer ${#missing_repos[@]} manglende repoer. Eksisterende registreringer beholdes."
 fi
@@ -281,7 +299,7 @@ if [ "$DRY_RUN" = true ]; then
   exit 0
 fi
 
-printf '\n[oppsett] Utføre endringene over? [y/N] '
+printf '\n[oppsett] Vil du utføre endringene over? [y/N] '
 answer=""
 if ! IFS= read -r answer; then
   info "Ingen bekreftelse mottatt. Ingen konfigurasjon er endret." >&2
@@ -294,6 +312,20 @@ case "$answer" in
     exit 0
     ;;
 esac
+
+python3 "$SCRIPT_DIR/frontend-node.py" verify "$ROOT_REPO_DIR" "$node_runtime"
+if [ "$node_permitted" = false ]; then
+  if ! run_cplt display config set --local --force allow.exec "$node_path"; then
+    info "Node-tillatelsen kunne ikke lagres. Se cplt-feilen over, rett opp og kjør skriptet på nytt." >&2
+    info "Ingen bredere tillatelse forsøkes." >&2
+    exit 1
+  fi
+fi
+if ! python3 "$SCRIPT_DIR/frontend-node.py" check "$ROOT_REPO_DIR"; then
+  info "Node-kontrollen etter oppsett feilet. Endringer kan være lagret." >&2
+  info "Kontroller cplt config show utenfor sandboksen før du prøver igjen." >&2
+  exit 1
+fi
 
 if [ "${#missing_repos[@]}" -gt 0 ]; then
   if ! run_cplt display config set --local sandbox.repo_dirs "${missing_repos[@]}"; then
@@ -316,4 +348,4 @@ else
   info "Docker-forslaget er godkjent for neste sandboksøkt som startes fra hovedrepoet."
 fi
 info "Du kan trekke tilbake godkjenningen med: ./scripts/setup-cplt-repos.sh --revoke-docker"
-info "Repoene er registrert. Start en ny cplt-sesjon fra $ROOT_REPO_DIR."
+info "Repoene er registrert. Start en ny cplt-økt fra $ROOT_REPO_DIR."
